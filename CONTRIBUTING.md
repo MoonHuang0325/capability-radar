@@ -25,7 +25,7 @@
 ## 几条原则
 
 - 所有数据必须带来源与日期，这是本项目的地基
-- 证据分级：A=一手来源+存档，B=权威二手，C=待核实。细则见 [methodology.md 第 4 节](docs/methodology.md)
+- 证据分级定义以 [methodology.md](docs/methodology.md) 为唯一标准
 - 失败教训与成功案例同等权重，欢迎补充避坑类信号
 - PR 会经过数据校验 CI（schema、CSV 表头、LATEST 一致性），提交前可本地运行 `python scripts/validate_data.py`
 - 讨论对事不对人，用中文或英文都可以
