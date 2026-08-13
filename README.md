@@ -1,9 +1,9 @@
-# 能力雷达 · Capability Radar
+# Capability Radar
 
-**什么能力正在升值？企业正在为什么 AI 能力付钱？**
-每周自动回答这两个问题。
+**What skills are appreciating? What AI capabilities are companies actually paying for?**
+An open-source radar that answers both questions, every week.
 
-**Track what companies hire for — and what companies pay for.**
+![Capability Radar](.github/social-preview.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/MoonHuang0325/capability-radar?style=social)](https://github.com/MoonHuang0325/capability-radar/stargazers)
@@ -11,71 +11,76 @@
 ![Last commit](https://img.shields.io/github/last-commit/MoonHuang0325/capability-radar)
 [![radar-watchdog](https://github.com/MoonHuang0325/capability-radar/actions/workflows/radar-watchdog.yml/badge.svg)](https://github.com/MoonHuang0325/capability-radar/actions/workflows/radar-watchdog.yml)
 
-## 本周信号（2026-08-13）
+> 🌍 [中文 README](README.zh-CN.md)
 
-| 信号 | 动量 | 证据 |
+## This week's signals (2026-08-13)
+
+| Signal | Momentum | Evidence |
 |---|---|---|
-| Agent 搭建 / 工作流自动化 | ↑ 连续两期最强 | [B 类应用开发岗占新发 AI 岗位 43.8%](data/signals/2026-08-13-maimai-b-class-jobs-share.yml) |
-| AI 评估与可观测性 | ↑ 雇主最大供给缺口 | [报告](reports/2026-08-13.md) |
-| 大模型安全采购（金融/政务） | ↑ 进入集采目录 | [北京银行中标公告 · A 级](data/signals/2026-08-13-bank-of-beijing-llm-security-gateway.yml) |
+| Agent building / workflow automation | ↑ Strongest for 2 consecutive weeks | [B-class applied dev roles = 43.8% of new AI job posts](data/signals/2026-08-13-maimai-b-class-jobs-share.yml) |
+| AI evaluation & observability | ↑ Largest employer supply gap | [Report](reports/2026-08-13.md) |
+| LLM security procurement (finance/gov) | ↑ Entering centralized procurement catalogs | [Bank of Beijing award notice · Grade A](data/signals/2026-08-13-bank-of-beijing-llm-security-gateway.yml) |
 
-**▶ [阅读最新一期](LATEST.md)　🚀 [部署你自己的雷达](prompts/weekly-agent-prompt.md)　📊 [结构化信号数据](data/)**
+**▶ [Read the latest issue](LATEST.md)　🚀 [Create your own radar](https://github.com/MoonHuang0325/capability-radar/generate)　📊 [Structured signal data](data/)**
 
 ---
 
-## 它监控两个市场
+## It watches two markets
 
-AI 落地有两个最真实的市场信号：
+The two most honest market signals of AI adoption:
 
-- **招聘市场（talent）**：企业准备为谁付工资——什么技能在涨价，什么在贬值
-- **采购市场（procurement）**：企业正在为什么付钱——中标公告是最诚实的转型数据
+- **Talent market** — who companies are preparing to pay salaries to: which skills are appreciating, which are depreciating
+- **Procurement market** — what companies are paying for right now: award notices are the most honest transformation data
 
-Newsletters 回答"发生了什么"，能力雷达回答"**什么正在变得更重要**"。每期与上期逐信号对比，标注新增 / 强化 / 消退，你看到的是趋势的动量，不是孤立的快照。
+Newsletters tell you *what happened*. Capability Radar tells you **what is becoming more important**. Every issue is compared signal-by-signal against the previous one — marked as new / strengthening / fading — so you see momentum, not isolated snapshots.
 
-## 三条设计原则
+## Create My Radar
 
-1. **证据分层**：每条信号带 A/B/C 证据等级。A=一手来源可点击核验，B=权威二手，C=待核实。数据可以拿去开会。
-2. **失败与成功同权**：企业侧同时收录落地案例与烂尾教训，避坑信息不比成功案例便宜。
-3. **人机分工**：人类定框架、选题、判断信号重要性；AI Agent 执行每周调研、撰写、对比。这个项目本身就是一次公开的"AI 时代工作方式"实验。
+This is a **template repository** — you don't fork it, you generate your own:
 
-## 部署你自己的雷达
+1. **[Create My Radar](https://github.com/MoonHuang0325/capability-radar/generate)** → edit [radar.yml](radar.yml) to pick what you care about (or use a preset from [packs/](packs/): AI Product Manager / Developer / Finance / Manufacturing)
+2. Copy [prompts/weekly-agent-prompt.md](prompts/weekly-agent-prompt.md) into your AI agent (any agent with web search + scheduled tasks works)
+3. Set it to run weekly — reports and structured signals accumulate automatically
 
-1. Fork 本仓库，修改 [radar.yml](radar.yml) 选择你关心的方向（或直接选用 [packs/](packs/) 里的预设：AI 产品经理 / 开发者 / 金融 / 制造）
-2. 复制 [prompts/weekly-agent-prompt.md](prompts/weekly-agent-prompt.md) 到你使用的 AI Agent（具备联网搜索与定时任务能力即可）
-3. 设定每周运行，报告与结构化信号会自动累积
+Built-in watchdog: a weekly GitHub Action checks whether the report was updated on time and opens an issue if it wasn't (see [ROADMAP](ROADMAP.md) and `.github/workflows/`).
 
-内置 watchdog：每周自动检查报告是否按时更新，漏跑会自动开 issue 提醒（见 [ROADMAP](ROADMAP.md) 与 `.github/workflows/`）。
+## Three design principles
 
-## 目录结构
+1. **Tiered evidence** — every signal carries an A/B/C evidence grade. A = primary source, click-verifiable; B = authoritative secondary; C = unverified. Data you can bring into a meeting.
+2. **Failures weigh as much as successes** — the enterprise track collects both adoption cases and abandoned pilots. Avoidance intel isn't cheaper than success stories.
+3. **Human/agent division of labor** — the human sets framework, topics, and judges signal importance; the AI agent runs weekly research, writing, and comparison. This project is itself a public experiment in "how work gets done in the AI era."
+
+## Repository structure
 
 ```
-├── LATEST.md           # 最新一期完整报告
-├── reports/            # 每周情报快照（按日期归档）
-├── data/               # 结构化信号（YAML）与采购记录（CSV），A/B/C 证据分层
+├── LATEST.md           # Latest full report
+├── reports/            # Weekly intelligence snapshots (archived by date)
+├── data/               # Structured signals (YAML) & procurement records (CSV), A/B/C graded
 │   ├── signals/
 │   └── procurement/
 ├── schemas/
-│   └── signal.schema.json  # 信号数据格式定义
-├── radar.yml           # 雷达配置：Fork 后改这一个文件
-├── packs/              # 预设监控视角（AI 产品经理 / 开发者 / 金融 / 制造）
+│   └── signal.schema.json  # Signal data format definition
+├── radar.yml           # Radar config: the one file you edit after generating
+├── packs/              # Preset monitoring lenses (AI PM / Developer / Finance / Manufacturing)
 ├── prompts/
-│   └── weekly-agent-prompt.md  # 可复用的每周监控提示词
+│   └── weekly-agent-prompt.md  # Reusable weekly monitoring prompt
+├── roadmap/            # Evidence-backed AI transition roadmaps per role
 ├── docs/
-│   └── methodology.md  # 完整方法论：信源分层、证据层、对比机制
-├── ROADMAP.md          # 路线图：什么在做、什么不做
-├── CONTRIBUTING.md     # 如何提交信号、纠错、改进方法论
+│   └── methodology.md  # Full methodology: source tiers, evidence grading, diff mechanism
+├── ROADMAP.md          # Project roadmap: what's planned, what's explicitly not
+├── CONTRIBUTING.md     # How to submit signals, corrections, methodology improvements
 └── LICENSE
 ```
 
-## 参与
+## Data & licensing
 
-- 路线图与"不打算做什么"见 [ROADMAP.md](ROADMAP.md)
-- 提交信号、纠错、改进方法论见 [CONTRIBUTING.md](CONTRIBUTING.md)
+Code is [MIT](LICENSE). Third-party source material remains the property of its original publishers — this project indexes, extracts facts, and archives verification copies. See [DATA_NOTICE.md](DATA_NOTICE.md).
 
-## 作者
+## Contributing
 
-[@MoonHuang0325](https://github.com/MoonHuang0325) — 本项目由人类策划方向、AI Agent 执行调研与撰写，每周持续维护。
+- Roadmap and "what we won't do": [ROADMAP.md](ROADMAP.md)
+- Submit signals, corrections, methodology improvements: [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## License
+## Author
 
-[MIT](LICENSE)
+[@MoonHuang0325](https://github.com/MoonHuang0325) — direction curated by a human, research & writing executed by an AI agent, maintained weekly.

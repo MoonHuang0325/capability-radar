@@ -1,9 +1,10 @@
 name: radar-watchdog
 
-# 雷达看门狗，每周二 10:30（北京时间）做两件事：
-# 1. 同步：LATEST.md 若与最新报告不一致，自动修正并提交（消除双份真相源漂移）
-# 2. 报警：最新报告超过 8 天未更新，自动开 issue 提醒（阈值 -ge 8，漏跑次周即报）
-# 注：GitHub 会在仓库 60 天无活动时停用 schedule；每周的自动提交本身即活动，可规避。
+# 雷达看门狗，每周二 10:30（北京时间）做三件事：
+# 1. 保活：无条件提交 .github/last-check 时间戳——GitHub 会在仓库 60 天无活动时停用
+#    schedule，而 LATEST 同步在稳态下不产生提交，没有保活机制看门狗会死在唯一该叫的时候
+# 2. 同步：LATEST.md 若与最新报告不一致，自动修正并提交（消除双份真相源漂移）
+# 3. 报警：最新报告超过 8 天未更新，自动开 issue（阈值 -ge 8，漏跑次周即报）
 # 来历：本项目第二期曾因电脑未开机漏跑，三天后才被发现。
 
 on:
@@ -21,22 +22,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: 同步 LATEST.md 到最新报告
+      - name: 保活 + 同步 LATEST.md
         run: |
           set -e
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/last-check
           latest=$(ls reports/ | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}\.md$' | sort | tail -1)
           if [ -z "$latest" ]; then echo "没有找到报告文件"; exit 1; fi
+          changed=0
           if ! cmp -s "reports/$latest" LATEST.md; then
             cp "reports/$latest" LATEST.md
-            git config user.name "radar-bot"
-            git config user.email "radar-bot@users.noreply.github.com"
-            git add LATEST.md
-            git commit -m "chore: LATEST.md 同步至 $latest [skip ci]"
-            git push
-            echo "LATEST.md 已同步至 $latest"
-          else
-            echo "LATEST.md 已是最新"
+            changed=1
           fi
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add .github/last-check
+          [ "$changed" -eq 1 ] && git add LATEST.md
+          git commit -m "chore: watchdog 例行检查 $(date -u +%Y-%m-%d) [skip ci]"
+          git push
+          echo "保活提交完成；LATEST 变更: $changed"
 
       - name: 检查报告新鲜度，漏跑开 issue
         env:

@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Capability Radar Signal v2",
-  "description": "能力雷达单条信号的结构化格式。v2 增加跨周身份：series_id 让同一主题的连续观测成为可计算的时间序列。",
+  "title": "Capability Radar Signal v2.1",
+  "description": "能力雷达单条信号的结构化格式。v2.1 增加命名与日期格式约束，防止数据暴涨后的脏数据。",
   "type": "object",
   "required": ["id", "series_id", "date", "track", "category", "summary", "source", "confidence", "status"],
   "properties": {
-    "id": { "type": "string", "description": "格式：YYYY-MM-DD-短横线命名，属于这一次观测" },
-    "series_id": { "type": "string", "description": "跨周稳定身份，格式：track.主题.指标，如 procurement.finance.llm-security-gateway。同一主题的连续观测必须使用相同 series_id" },
-    "date": { "type": "string", "description": "信号录入日期 YYYY-MM-DD" },
+    "id": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}-[a-z0-9-]+$", "description": "格式：YYYY-MM-DD-短横线命名，属于这一次观测" },
+    "series_id": { "type": "string", "pattern": "^(talent|procurement|ecosystem)(\\.[a-z0-9][a-z0-9-]*){2,}$", "description": "跨周稳定身份，格式：track.主题.指标（各段小写字母/数字/连字符）。同一主题的连续观测必须使用相同 series_id" },
+    "date": { "type": "string", "format": "date", "description": "信号录入日期" },
     "track": {
       "type": "string",
       "enum": ["talent", "procurement", "ecosystem"],
@@ -25,29 +25,30 @@
     "period": {
       "type": "object",
       "properties": {
-        "start": { "type": "string" },
-        "end": { "type": "string" }
+        "start": { "type": "string", "format": "date" },
+        "end": { "type": "string", "format": "date" }
       },
       "description": "数据口径覆盖的统计区间"
     },
-    "previous_signal_id": { "type": ["string", "null"], "description": "同一 series 的上一条信号 id；series 首条填 null" },
+    "previous_signal_id": { "type": ["string", "null"], "description": "同一 series 的上一条信号 id；series 首条填 null。CI 会校验引用存在、series 一致、日期早于本记录" },
     "source": {
       "type": "object",
       "required": ["name", "url", "date", "type"],
       "properties": {
         "name": { "type": "string", "description": "原始发布方，不是转述方" },
         "url": { "type": ["string", "null"], "description": "原始链接。找不到填 null，且 confidence 不得为 A" },
-        "date": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
         "type": { "type": "string", "enum": ["primary", "research", "media", "community"] }
       }
     },
     "archive": {
       "type": "object",
+      "required": ["type", "path"],
       "properties": {
         "type": { "type": "string", "enum": ["repo", "wayback"] },
-        "path": { "type": "string", "description": "repo 内路径（如 evidence/...）或 Wayback 地址" }
+        "path": { "type": "string", "description": "repo 内路径（evidence/...）或带 14 位时间戳的 Wayback 快照地址" }
       },
-      "description": "A 级证据必须带存档：原件转存 repo 或提交 Wayback，把可核验变成永久可核验"
+      "description": "A 级证据必须带存档。转存第三方公告时必须先按 methodology 第 4 节去标识化"
     },
     "confidence": {
       "type": "string",
@@ -58,7 +59,7 @@
       "type": "string",
       "enum": ["new", "strengthening", "stable", "weakening"]
     },
-    "status_reason": { "type": "string", "description": "动量判断依据，跨周对比时必填" },
+    "status_reason": { "type": "string", "description": "动量判断依据；status 不为 new 时必填（CI 强制）" },
     "note": { "type": "string" }
   }
 }

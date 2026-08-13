@@ -4,7 +4,9 @@
 
 radar:
   # 你关心的职业方向（个人侧 · 招聘市场）
-  roles: []
+  roles:
+    - AI Product Manager
+    - AI Application Engineer
 
   # 你关心的行业（企业侧 · 采购市场）
   industries:
