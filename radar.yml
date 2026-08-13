@@ -1,0 +1,28 @@
+# 能力雷达配置文件
+# Fork 本仓库后，改这个文件，就能拥有一个盯着你关心方向的雷达。
+# 各字段含义见 docs/methodology.md；更多预设组合见 packs/ 目录。
+
+radar:
+  # 你关心的职业方向（个人侧 · 招聘市场）
+  roles: []
+
+  # 你关心的行业（企业侧 · 采购市场）
+  industries:
+    - finance
+    - manufacturing
+    - retail
+    - healthcare
+
+  # 监控区域
+  regions:
+    - China
+    - Global
+
+  # 追踪轨道：talent=招聘市场，procurement=采购市场，ecosystem=开源/报告生态
+  tracks:
+    - talent
+    - procurement
+    - ecosystem
+
+  language: zh-CN
+  schedule: weekly

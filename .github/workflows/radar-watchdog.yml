@@ -1,0 +1,47 @@
+name: radar-watchdog
+
+# 雷达看门狗：每周检查最新报告是否按时更新。
+# 超过 8 天没有新报告，自动开 issue 提醒维护者补跑。
+# 灵感来源：本项目第二期曾因电脑未开机漏跑，三天后才被发现。
+
+on:
+  schedule:
+    # 每周二 10:30（北京时间，UTC+8）= 周二 02:30 UTC
+    - cron: '30 2 * * 2'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 检查 reports/ 最新文件日期
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          latest=$(ls reports/*.md | sort | tail -1 | xargs basename | sed 's/\.md//')
+          echo "最新报告: $latest"
+          latest_ts=$(date -u -d "$latest" +%s)
+          now_ts=$(date -u +%s)
+          days=$(( (now_ts - latest_ts) / 86400 ))
+          echo "距今: ${days} 天"
+          if [ "$days" -gt 8 ]; then
+            gh label create watchdog --color E11D48 --description "雷达漏跑提醒" 2>/dev/null || true
+            existing=$(gh issue list --label watchdog --state open --json number --jq length)
+            if [ "$existing" -eq 0 ]; then
+              gh issue create \
+                --title "📡 雷达漏跑提醒：最新报告已是 ${days} 天前" \
+                --body "watchdog 自动创建：reports/ 最新文件为 ${latest}.md，已超过 8 天未更新。请检查每周定时任务并手动补跑。" \
+                --label watchdog
+              echo "已创建提醒 issue"
+            else
+              echo "已有未关闭的 watchdog issue，跳过"
+            fi
+          else
+            echo "报告新鲜，无需处理"
+          fi

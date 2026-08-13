@@ -1,0 +1,21 @@
+# Radar Pack · AI 产品经理
+# 用法：把本文件内容合并进你的 radar.yml
+
+radar:
+  roles:
+    - AI Product Manager
+    - Agent Product Manager
+  industries: []
+  regions:
+    - China
+    - Global
+  tracks:
+    - talent
+    - ecosystem
+  focus_keywords:
+    - AI 产品经理
+    - Agent 产品设计
+    - 评估与可观测性
+    - context engineering
+  language: zh-CN
+  schedule: weekly

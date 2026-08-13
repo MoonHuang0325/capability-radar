@@ -1,0 +1,22 @@
+# Radar Pack · 开发者
+# 用法：把本文件内容合并进你的 radar.yml
+
+radar:
+  roles:
+    - AI Engineer
+    - Backend Developer
+  industries: []
+  regions:
+    - China
+    - Global
+  tracks:
+    - talent
+    - ecosystem
+  focus_keywords:
+    - Agent 框架
+    - LangGraph
+    - MCP
+    - 本地推理
+    - AI Coding
+  language: zh-CN
+  schedule: weekly

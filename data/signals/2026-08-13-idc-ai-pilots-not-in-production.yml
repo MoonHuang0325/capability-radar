@@ -1,0 +1,17 @@
+id: 2026-08-13-idc-ai-pilots-not-in-production
+date: 2026-08-13
+track: ecosystem
+category: ai-adoption-failure
+region: Global
+summary: IDC 口径约 88% 的 AI 试点从未投产，企业转型进入 ROI 硬约束阶段
+metric: 未投产 AI 试点占比
+value: 88
+unit: "%"
+source:
+  name: IDC（Datatonic 引述）
+  url: null
+  date: "2026-01-20"
+  type: media
+confidence: C
+status: new
+note: 二手链路 Datatonic→IDC，IDC 原始报告待溯源；补录后升级

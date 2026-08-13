@@ -1,0 +1,18 @@
+id: 2026-08-13-gartner-ai-trough-2026
+date: 2026-08-13
+track: ecosystem
+category: ai-spending-sentiment
+region: Global
+summary: Gartner 判定 AI 在 2026 年处于泡沫破灭低谷期，企业偏好向现有供应商采购战术性项目；同时预测 2026 全球 AI 支出 2.52 万亿美元（+44%）
+metric: 全球 AI 支出预测
+value: 25200
+unit: 亿美元
+change: +44% YoY
+source:
+  name: Gartner 官方新闻稿
+  url: null
+  date: "2026-01-30"
+  type: research
+confidence: C
+status: new
+note: 原始新闻稿链接待补；补录后升级 B

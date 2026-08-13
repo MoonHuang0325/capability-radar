@@ -1,0 +1,20 @@
+# Radar Pack · 制造业转型
+# 用法：把本文件内容合并进你的 radar.yml
+
+radar:
+  roles: []
+  industries:
+    - manufacturing
+  regions:
+    - China
+  tracks:
+    - procurement
+    - talent
+  focus_keywords:
+    - 机器视觉
+    - 预测性维护
+    - 排产优化
+    - 工业智能体
+    - 供应链
+  language: zh-CN
+  schedule: weekly

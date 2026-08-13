@@ -1,0 +1,21 @@
+# Radar Pack · 金融行业转型
+# 用法：把本文件内容合并进你的 radar.yml
+
+radar:
+  roles: []
+  industries:
+    - finance
+  regions:
+    - China
+  tracks:
+    - procurement
+    - talent
+  focus_keywords:
+    - 大模型安全网关
+    - 安全围栏
+    - 智能投研
+    - 信贷审批
+    - 城商行
+    - 合规
+  language: zh-CN
+  schedule: weekly
