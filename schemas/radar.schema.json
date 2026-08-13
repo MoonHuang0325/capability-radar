@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capability Radar Config",
+  "description": "radar.yml 与 packs/*.yml 的配置格式。Config 决定监控范围，Prompt 只决定方法。",
+  "type": "object",
+  "required": ["radar"],
+  "properties": {
+    "radar": {
+      "type": "object",
+      "required": ["tracks", "language", "schedule"],
+      "properties": {
+        "roles": { "type": "array", "items": { "type": "string" }, "description": "个人侧监控的职业方向，空数组=不追踪个人侧" },
+        "industries": { "type": "array", "items": { "type": "string" }, "description": "企业侧监控的行业，空数组=不追踪企业侧" },
+        "regions": { "type": "array", "items": { "type": "string" } },
+        "tracks": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["talent", "procurement", "ecosystem"] },
+          "minItems": 1
+        },
+        "focus_keywords": { "type": "array", "items": { "type": "string" }, "description": "优先收录的关键词" },
+        "language": { "type": "string", "enum": ["zh-CN", "en"] },
+        "schedule": { "type": "string", "enum": ["weekly", "biweekly"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

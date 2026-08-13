@@ -1,5 +1,6 @@
 id: 2026-08-13-gartner-ai-trough-2026
-date: 2026-08-13
+series_id: ecosystem.sentiment.ai-spending-outlook
+date: "2026-08-13"
 track: ecosystem
 category: ai-spending-sentiment
 region: Global
@@ -8,6 +9,10 @@ metric: 全球 AI 支出预测
 value: 25200
 unit: 亿美元
 change: +44% YoY
+period:
+  start: "2026-01-01"
+  end: "2026-12-31"
+previous_signal_id: null
 source:
   name: Gartner 官方新闻稿
   url: null
@@ -15,4 +20,5 @@ source:
   type: research
 confidence: C
 status: new
+status_reason: 与 IDC 88% 试点未投产、Snowflake 高管预期 41% 智能体项目失败共同构成 ROI 硬约束叙事
 note: 原始新闻稿链接待补；补录后升级 B

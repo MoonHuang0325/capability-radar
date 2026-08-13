@@ -1,5 +1,6 @@
 id: 2026-08-13-idc-ai-pilots-not-in-production
-date: 2026-08-13
+series_id: ecosystem.adoption.pilot-to-production-rate
+date: "2026-08-13"
 track: ecosystem
 category: ai-adoption-failure
 region: Global
@@ -7,6 +8,7 @@ summary: IDC 口径约 88% 的 AI 试点从未投产，企业转型进入 ROI �
 metric: 未投产 AI 试点占比
 value: 88
 unit: "%"
+previous_signal_id: null
 source:
   name: IDC（Datatonic 引述）
   url: null
@@ -14,4 +16,5 @@ source:
   type: media
 confidence: C
 status: new
+status_reason: 与 MIT NANDA 95% GenAI 试点无显著损益影响（2025-08）方向一致，失败率口径持续高位
 note: 二手链路 Datatonic→IDC，IDC 原始报告待溯源；补录后升级

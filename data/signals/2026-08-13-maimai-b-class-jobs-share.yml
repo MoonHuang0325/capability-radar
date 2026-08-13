@@ -1,5 +1,6 @@
 id: 2026-08-13-maimai-b-class-jobs-share
-date: 2026-08-13
+series_id: talent.agent-application.job-share
+date: "2026-08-13"
 track: talent
 category: agent-engineering
 skill: Agent 应用开发
@@ -9,6 +10,10 @@ metric: 新发 AI 岗位占比（B 类）
 value: 43.8
 unit: "%"
 change: B 类 > A 类 33.3% > C 类 22.9%
+period:
+  start: "2026-01-01"
+  end: "2026-04-30"
+previous_signal_id: null
 source:
   name: 脉脉高聘（2026-05-20 演讲发布，新浪财经报道）
   url: https://finance.sina.com.cn/jjxw/2026-05-21/doc-inhyrfcw6007708.shtml
@@ -16,4 +21,5 @@ source:
   type: media
 confidence: B
 status: strengthening
+status_reason: 延续 08-09 期「中国 Agent 岗位 Q1 +310%、供需 1:7.5」锚点，应用层领先从增速验证到结构验证
 note: 原始出处为脉脉官方发布，媒体报道可交叉核验；脉脉官网原始页待补

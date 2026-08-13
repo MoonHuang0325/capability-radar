@@ -1,5 +1,6 @@
 id: 2026-08-13-bank-of-beijing-llm-security-gateway
-date: 2026-08-13
+series_id: procurement.finance.llm-security-gateway
+date: "2026-08-13"
 track: procurement
 category: llm-security-procurement
 industry: 金融
@@ -9,11 +10,19 @@ metric: 中标金额
 value: 980000
 unit: 元
 change: 新增采购品类
+period:
+  start: "2026-07-02"
+  end: "2026-07-28"
+previous_signal_id: null
 source:
   name: 北京银行集中采购管理系统（中标结果公告）
   url: https://login-cpm-xt.bankofbeijing.com.cn/cms/default/webfile/1ywgg4/20260728/1266718949509169152.html
   date: "2026-07-28"
   type: primary
+archive:
+  type: repo
+  path: evidence/procurement/2026-07-28-bank-of-beijing-llm-security-gateway.md
 confidence: A
 status: new
-note: 招标公告 2026-07-02，预算 200 万元；大模型安全治理从报告议题进入银行集采目录的标志性样本
+status_reason: 大模型安全治理从报告议题进入银行集采目录的标志性样本
+note: 招标公告 2026-07-02，预算 200 万元；Wayback 存档待补
