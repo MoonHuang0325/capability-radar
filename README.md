@@ -4,6 +4,9 @@
 > An open-source, weekly-updated dual-track intelligence radar: personal AI-era capability signals + industry AI-transformation signals.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/MoonHuang0325/capability-radar?style=social)](https://github.com/MoonHuang0325/capability-radar/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/MoonHuang0325/capability-radar?style=social)](https://github.com/MoonHuang0325/capability-radar/network/members)
+![Last commit](https://img.shields.io/github/last-commit/MoonHuang0325/capability-radar)
 
 ## 解决什么问题
 
@@ -48,8 +51,15 @@
 │   └── methodology.md  # 完整方法论：信号源、分层框架、对比机制
 ├── prompts/
 │   └── weekly-agent-prompt.md  # 可复用的每周监控提示词
+├── ROADMAP.md          # 路线图：什么在做、什么不做
+├── CONTRIBUTING.md     # 如何提交信号、纠错、改进方法论
 └── LICENSE
 ```
+
+## 参与
+
+- 路线图与"不打算做什么"见 [ROADMAP.md](ROADMAP.md)
+- 提交信号、纠错、改进方法论见 [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## 如何部署你自己的雷达
 
